@@ -82,7 +82,7 @@ For more information about the Service Registry and its use in a client applicat
 
 == Container to Container Service Communication After Discovery [wgu]
 
-This is a test for the greeter to consume the service provided by message-generation directly without routing through the `[ROUTE]` mentioned above. This needs to be implemented with the Cloud Foundry [Container-to-Container Networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html) feature.
+This is a test for the greeter to consume the service provided by message-generation directly without routing through the `[ROUTE]` mentioned above. This needs to be implemented with the Cloud Foundry https://docs.cloudfoundry.org/concepts/understand-cf-networking.html[Container-to-Container Networking] feature.
 
 These properties are set in link:message-generation/src/main/resources/application.yml[`message-generation/src/main/resources/application.yml`]:
 
