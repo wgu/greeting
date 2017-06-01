@@ -79,3 +79,18 @@ Connected, tailing logs for app message-generation in org myorg / space developm
 image::greeting-with-parameters.png[link:docs/images/greeting-with-parameters.png]
 
 For more information about the Service Registry and its use in a client application, see the http://docs.pivotal.io/spring-cloud-services/service-registry/writing-client-applications.html[Service Registry documentation].
+
+== Container to Container Service Communication After Discovery [wgu]
+
+This is a test for the greeter to consume the service provided by message-generation directly without routing through the `[ROUTE]` mentioned above. This needs to be implemented with the Cloud Foundry [Container-to-Container Networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html) feature.
+
+These properties are set in link:message-generation/src/main/resources/application.yml[`message-generation/src/main/resources/application.yml`]:
+
+....
+eureka:
+  client:
+      preferIpAddress: true
+  instance:
+      hostname: ${CF_INSTANCE_INTERNAL_IP}
+      nonSecurePort: ${PORT}
+....
