@@ -28,10 +28,15 @@ dependencyManagement {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-test")
     compile("io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry")
+    compile("org.springframework.cloud:spring-cloud-starter-feign")
 }
 
 task wrapper(type: Wrapper) {

@@ -5,6 +5,13 @@ spring:
     services:
       registrationMethod: route
 
+eureka:
+  client:
+    preferIpAddress: true
+  instance:
+    hostname: ${CF_INSTANCE_INTERNAL_IP}
+    nonSecurePort: ${PORT}
+
 ---
 
 spring:
