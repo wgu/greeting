@@ -49,7 +49,7 @@ public class GreeterApplication {
 
     }
 
-    @FeignClient("https://message-generation")
+    @FeignClient("http://message-generation")
     interface MessageGenerationClient {
       @RequestMapping(value = "/greeting", method = GET)
       Greeting greeting(@RequestParam("name") String name, @RequestParam("salutation") String salutation);

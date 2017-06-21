@@ -3,14 +3,7 @@ spring:
     name: message-generation
   cloud:
     services:
-      registrationMethod: route
-
-eureka:
-  client:
-    preferIpAddress: true
-  instance:
-    hostname: ${CF_INSTANCE_INTERNAL_IP}
-    nonSecurePort: ${PORT}
+      registrationMethod: direct
 
 ---
 

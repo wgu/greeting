@@ -84,13 +84,20 @@ For more information about the Service Registry and its use in a client applicat
 
 This is a test for the greeter to consume the service provided by message-generation directly without routing through the `[ROUTE]` mentioned above. This needs to be implemented with the Cloud Foundry https://docs.cloudfoundry.org/concepts/understand-cf-networking.html[Container-to-Container Networking] feature.
 
-These properties are set in link:message-generation/src/main/resources/application.yml[`message-generation/src/main/resources/application.yml`]:
+Instead of using route registration method, the following is set in link:message-generation/src/main/resources/application.yml[`message-generation/src/main/resources/application.yml`]:
 
 ....
-eureka:
-  client:
-      preferIpAddress: true
-  instance:
-      hostname: ${CF_INSTANCE_INTERNAL_IP}
-      nonSecurePort: ${PORT}
+spring:
+ cloud:
+   services:
+     registrationMethod: direct
 ....
+
+Additionally, after pushing `message-generation` and `greeter`, create a policy that allows direct network traffic from `greeter` to `message-generation`, e.g.,
+
+....
+cf allow-access greeter message-generation --protocol tcp --port 8080
+cf list-access --app greeter
+....
+
+More details about administering Container-to-Container Networking, visit http://docs.cloudfoundry.org/devguide/deploy-apps/cf-networking.html
